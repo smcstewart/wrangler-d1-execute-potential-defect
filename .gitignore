@@ -2,4 +2,5 @@ dist
 node_modules
 .wrangler
 
-wrangler.toml
+pnpm-lock.yaml
+

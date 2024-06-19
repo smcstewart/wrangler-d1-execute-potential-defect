@@ -9,16 +9,11 @@ Minimal repro of potential defect when running wrangler d1 execute with --file o
 3. Test for expected results (the results of the query).
 4. Update `wrangler` version to `3.57`+.
 5. Test for incorrect results (the metadata of the query).
+6. Teardown.
 
 ## Steps
 
 ### Init the environment
-
-`mv wrangler.toml.template wrangler.toml`
-
-Change line 1, adding your Cloudflare `account_id`.
-
-e.g. `account_id = ""` -> `account_id = "put-your-account-id-in here"` 
 
 If you're not using `pnpm`, replace the `pnpm` commands with the appropriate commands from your chosen package manager, such as `npm`, `yarn` etc.
 
@@ -28,7 +23,11 @@ cd wrangler-d1-execute-potential-defect
 pnpm install
 ```
 
-> The environment setup here is for `dev`, but if you've called your environment something different, remember to replace that in the commands below and also in your `wrangler.toml` file.
+Change line 1 of `wrangler.toml`, adding your Cloudflare `account_id`.
+
+e.g. `account_id = ""` -> `account_id = "put-your-account-id-in here"`
+
+> The environment below is setup for `dev`, but if you've called your environment something different, remember to replace that in the commands below and also in your `wrangler.toml` file.
 
 ### Init the database
 
@@ -108,4 +107,12 @@ Note: if the execution fails to complete, your DB will return to its original st
 ├────────────────────────┼───────────┼──────────────┼───────────────────┤
 │ 1                      │ 1         │ 0            │ 0.02              │
 └────────────────────────┴───────────┴──────────────┴───────────────────┘
+```
+
+### Teardown
+
+```
+pnpm exec wrangler d1 delete wrangler-d1-execute-potential-defect --env dev
+cd ..
+rm -rf wrangler-d1-execute-potential-defect 
 ```
