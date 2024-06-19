@@ -1,0 +1,20 @@
+{
+  "name": "@smcstewart/wrangler-d1-execute-potential-defect",
+  "description": "Minimal repro of potential defect when running wrangler d1 execute with --file option since 3.57.",
+  "version": "0.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smcstewart/wrangler-d1-execute-potential-defect"
+  },
+  "main": "./dist/worker.js",
+  "scripts": {
+    "clean:all": "pnpm clean && rm -rf node_modules",
+    "clean": "rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240614.0",
+    "@types/node": "^20.14.5",
+    "wrangler": "3.56.0"
+  }
+}
